@@ -181,7 +181,7 @@ class System extends Router
 		$this->template->action_update = 'updated';
 		
 		// we need a system redirect to display updates...
-		system_redirect("?a=$go[a]&q=$go[q]");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]");
 	}
 	
 	
@@ -247,7 +247,7 @@ class System extends Router
 	
 	public function page_index()
 	{
-		system_redirect("?a=system&q=theme");
+        header('location:' . BASEURL . BASENAME . '/?a=system&q=theme');
 		exit;
 	}
 	
@@ -388,7 +388,7 @@ class System extends Router
 	{
 		global $go, $default;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		$this->template->location = $this->lang->word('upgrade');
 		
@@ -454,7 +454,7 @@ class System extends Router
 				$this->db->updateArray(PX.'settings', array('version' => $ver), "adm_id = '1'");
 			
 				// need a system redirect here...
-				system_redirect("?a=$go[a]&q=upgrade&x=complete");
+				header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=upgrade&x=complete");
 			}
 		}
 
@@ -472,7 +472,7 @@ class System extends Router
 	{
 		global $go, $default;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		$this->template->location = $this->lang->word('settings');
 		
@@ -549,7 +549,7 @@ class System extends Router
 	{
 		global $go, $default;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		$this->template->location = $this->lang->word('settings');
 		
@@ -1101,7 +1101,7 @@ class System extends Router
 		$this->abstracts->abstract_delete('statistics', 'system', 0);
 		$this->abstracts->abstract_delete('stats_override', 'system', 0);
 		
-		system_redirect("?a=$go[a]");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]");
 		exit;
 	}
 	
@@ -1129,7 +1129,7 @@ class System extends Router
 	{
 		global $go;
 
-		//if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		//if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 		
 		$this->template->location = $this->lang->word('main');
 
@@ -1178,7 +1178,7 @@ class System extends Router
 	{
 		global $go, $default;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		$this->template->location = $this->lang->word('profile');
 		
@@ -1326,7 +1326,7 @@ class System extends Router
 	{
 		global $go, $default;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		$this->template->location = $this->lang->word('utilities');
 		
@@ -1375,7 +1375,7 @@ class System extends Router
 	{
 		global $go, $default;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		$this->template->pop_location = $this->lang->word('tag preferences');
 		
@@ -1446,7 +1446,7 @@ var baseurl = '" . BASEURL . "';";
 		{
 			global $go, $default;
 
-			if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+			if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 			$this->template->pop_location = $this->lang->word('edit tag');
 			
@@ -1548,7 +1548,7 @@ var baseurl = '" . BASEURL . "';";
 	{
 		global $go, $default;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		$this->template->location = $this->lang->word('tags');
 
@@ -1790,7 +1790,7 @@ var baseurl = '" . BASEURL . "';";
 	{
 		global $go, $default;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		$this->template->location = $this->lang->word('options');
 		
@@ -1865,7 +1865,7 @@ var baseurl = '" . BASEURL . "';";
 		{
 			global $go;
 
-			if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+			if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 			
 			if ($go['id'] >= 1) { $this->page_section(); }
 
@@ -2044,7 +2044,7 @@ var baseurl = '" . BASEURL . "';";
 		$OBJ =& get_instance();
 		global $go;
 
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 			
 		if ($go['x'] == 'add') { $this->page_extensions_add(); }
 		if ($go['x'] == 'enable') { $this->page_format_enable(); }
@@ -2263,7 +2263,7 @@ var baseurl = '" . BASEURL . "';";
 	{
 		global $go;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 			
 		if ($go['x'] == 'add') { $this->page_extensions_add(); }
 		if ($go['x'] == 'enable') { $this->page_extensions_enable(); }
@@ -2451,7 +2451,7 @@ var baseurl = '" . BASEURL . "';";
 		$OBJ =& get_instance();
 		global $go;
 
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		//$this->template->location_override = $this->lang->word('system');
 		//$this->template->location = $this->lang->word('format');
@@ -2477,7 +2477,7 @@ var baseurl = '" . BASEURL . "';";
 			FROM ".PX."plugins 
 			WHERE pl_id = '$go[id]'");
 			
-		if (!$rs) { system_redirect("?a=$go[a]&q=$go[q]"); }
+		if (!$rs) { header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]"); }
 
 		load_helpers(array('output', 'html'));
 		load_module_helper('files', $go['a']);
@@ -2539,7 +2539,7 @@ var baseurl = '" . BASEURL . "';";
 		$OBJ =& get_instance();
 		global $go;
 
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		$this->template->location_override = $this->lang->word('system');
 		$this->template->location = $this->lang->word('format');
@@ -2567,7 +2567,7 @@ var baseurl = '" . BASEURL . "';";
 			FROM ".PX."plugins 
 			WHERE pl_id = '$go[id]'");
 			
-		if (!$rs) { system_redirect("?a=$go[a]&q=$go[q]"); }
+		if (!$rs) { header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]"); }
 
 		load_helpers(array('output', 'html'));
 		load_module_helper('files', $go['a']);
@@ -2629,7 +2629,7 @@ var baseurl = '" . BASEURL . "';";
 		$OBJ =& get_instance();
 		global $go;
 
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		//$this->template->location_override = $this->lang->word('system');
 		//$this->template->location = $this->lang->word('format');
@@ -2655,7 +2655,7 @@ var baseurl = '" . BASEURL . "';";
 			FROM ".PX."plugins 
 			WHERE pl_id = '$go[id]'");
 			
-		if (!$rs) { system_redirect("?a=$go[a]&q=$go[q]"); }
+		if (!$rs) { header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]"); }
 
 		load_helpers(array('output', 'html'));
 		load_module_helper('files', $go['a']);
@@ -2718,7 +2718,7 @@ var baseurl = '" . BASEURL . "';";
 		$OBJ =& get_instance();
 		global $go;
 
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 
 		$this->template->location_override = $this->lang->word('system');
 		$this->template->location = $this->lang->word('extensions');
@@ -2738,7 +2738,7 @@ var baseurl = '" . BASEURL . "';";
 			FROM ".PX."plugins 
 			WHERE pl_id = '$go[id]'");
 			
-		if (!$rs) { system_redirect("?a=$go[a]&q=$go[q]"); }
+		if (!$rs) { header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]"); }
 
 		load_helpers(array('output', 'html'));
 		load_module_helper('files', $go['a']);
@@ -2928,7 +2928,7 @@ var baseurl = '" . BASEURL . "';";
 		$OBJ =& get_instance();
 		global $go;
 
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 		
 		// do some validating
 		$file = (string) $_GET['file'];
@@ -2985,11 +2985,11 @@ var baseurl = '" . BASEURL . "';";
 		
 		if ($flag == true)
 		{
-			system_redirect("?a=$go[a]&q=$go[q]&x=edit&id=$flagged_last");
+			header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]&x=edit&id=$flagged_last");
 		}
 		else
 		{
-			system_redirect("?a=$go[a]&q=$go[q]");
+			header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]");
 		}
 		
 		exit;
@@ -3002,7 +3002,7 @@ var baseurl = '" . BASEURL . "';";
 		$OBJ =& get_instance();
 		global $go;
 
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 		
 		// do some validating
 		$file = (string) $_GET['file'];
@@ -3062,7 +3062,7 @@ var baseurl = '" . BASEURL . "';";
 			}
 		}
 
-		system_redirect("?a=$go[a]&q=$go[q]&x=edit&id=$last");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]&x=edit&id=$last");
 		exit;
 	}
 	
@@ -3072,7 +3072,7 @@ var baseurl = '" . BASEURL . "';";
 		$OBJ =& get_instance();
 		global $go;
 
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 		
 		// do some validating
 		$file = (string) $_GET['file'];
@@ -3131,7 +3131,7 @@ var baseurl = '" . BASEURL . "';";
 			}
 		}
 
-		system_redirect("?a=$go[a]&q=$go[q]&x=tagedit&id=$last");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]&x=tagedit&id=$last");
 		exit;
 	}
 	
@@ -3140,7 +3140,7 @@ var baseurl = '" . BASEURL . "';";
 	{
 		global $go;
 
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 		
 		// do some validating
 		$file = (string) $_GET['file'];
@@ -3148,7 +3148,7 @@ var baseurl = '" . BASEURL . "';";
 
 		$this->db->deleteArray(PX.'plugins', "pl_file = '$the_file'");
 
-		system_redirect("?a=$go[a]&q=$go[q]");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]");
 		exit;
 	}
 	
@@ -3157,14 +3157,14 @@ var baseurl = '" . BASEURL . "';";
 	{
 		global $go;
 
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 		
 		// do some validating
 		$file = (int) $go['id'];
 
 		$this->db->deleteArray(PX.'plugins', "pl_id = '$file'");
 
-		system_redirect("?a=$go[a]&q=$go[q]");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]");
 		exit;
 	}
 	
@@ -3446,7 +3446,7 @@ var ide = '$go[id]';";
 	
 			$last = $this->db->insertArray(PX.'media', $clean);
 			
-			system_redirect("?a=$go[a]&q=editfile&id=$last");
+			header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=editfile&id=$last");
 			exit;
 		}
 		
@@ -3507,7 +3507,7 @@ var ide = '$go[id]';";
 		// delete files
 		// need to throw a flag to update the exhibit images
 		
-		system_redirect("?a=$go[a]&q=img&id=$go[id]");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=img&id=$go[id]");
 	}
 	
 	
@@ -4443,7 +4443,7 @@ var ide = '$go[id]';";
 			}
 		}
 		
-		system_redirect("?a=$go[a]&q=files");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=files");
 	}
 	
 	
@@ -4642,7 +4642,7 @@ var ide = '$go[id]';";
 
 			// send an update notice
 			$this->template->action_update = 'updated';
-			system_redirect("?a=$go[a]&q=$go[q]");
+			header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=$go[q]");
 		}		
 	}
 	
@@ -4812,7 +4812,7 @@ var ide = '$go[id]';";
 			
 			$this->db->insertArray(PX.'objects', $page);
 			
-			system_redirect("?a=$go[a]&q=section&id=$last");
+			header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=section&id=$last");
 		}
 		
 		return;
@@ -4966,7 +4966,7 @@ var ide = '$go[id]';";
 	{
 		global $go;
 		
-		if ($go['id'] == 1) system_redirect("?a=$go[a]&q=sections");
+		if ($go['id'] == 1) header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=sections");
 		
 		$processor =& load_class('processor', TRUE, 'lib');
 		
@@ -4987,7 +4987,7 @@ var ide = '$go[id]';";
 			WHERE 
 			(sec_ord > '$temp[hsec_ord]')");
 		
-		system_redirect("?a=$go[a]&q=sections");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=sections");
 	}
 	
 	
@@ -6379,7 +6379,7 @@ var ide = '$go[id]';";
 	{
 		global $go, $default;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 		if ($go['id'] == 1) return;
 		
 		$this->template->location = $this->lang->word('delete');
@@ -6530,7 +6530,7 @@ var ide = '$go[id]';";
 			$last = $this->db->insertArray(PX.'users', $clean);
 			
 			// send to complete
-			system_redirect("?a=$go[a]&q=users&x=edit&id=$last");
+			header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=users&x=edit&id=$last");
 		}
 		
 		return;
@@ -6545,7 +6545,7 @@ var ide = '$go[id]';";
 		if (($go['id'] != 1) || ($go['id'] == $this->access->prefs['ID'])) $this->db->deleteArray(PX.'users', "ID='$go[id]'");
 		
 		// send to complete
-		system_redirect("?a=$go[a]&q=users");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=users");
 	}
 	
 	
@@ -6560,7 +6560,7 @@ var ide = '$go[id]';";
 		if ($go['id'] != 1) $this->db->updateArray(PX.'users', $clean, "ID='".$go['id']."'");
 		
 		// send to complete
-		system_redirect("?a=$go[a]&q=users");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=users");
 	}
 	
 	
@@ -6652,7 +6652,7 @@ var ide = '$go[id]';";
 			// send an update notice
 			if ($redirect == true)
 			{
-				system_redirect("?a=$go[a]&q=$go[q]");
+                header('location:' . BASEURL . BASENAME . "/?a=$go[a]&q=$go[q]");
 				exit;
 			}
 			else
@@ -6667,7 +6667,7 @@ var ide = '$go[id]';";
 	{
 		global $go, $default;
 		
-		if ($this->access->is_admin() == false) { system_redirect("?a=$go[a]"); }
+		if ($this->access->is_admin() == false) { header('location:' . BASEURL . BASENAME . "?a=$go[a]"); }
 		
 		if (isset($_GET['edit'])) { $this->page_code(); }
 
@@ -6950,6 +6950,6 @@ var ide = '$go[id]';";
 			}
 		}
 			
-		system_redirect("?a=$go[a]&q=files");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=files");
 	}
 }

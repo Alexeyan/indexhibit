@@ -140,7 +140,7 @@ class Plugins
 					$this->plugin[$this->file][$this->counter]['pl_hook'] = (isset($hook[1])) ? trim($hook[1]) : '';
 					$this->plugin[$this->file][$this->counter]['pl_function'] = (isset($fcn[1])) ? trim($fcn[1]) : '';
 					$this->plugin[$this->file][$this->counter]['pl_space'] = (isset($space[1])) ? trim($space[1]) : '';
-					$this->plugin[$this->file][$this->counter]['pl_order'] = (isset($order[1])) ? trim($order[1]) : '';
+					$this->plugin[$this->file][$this->counter]['pl_order'] = (isset($order[1])) ? trim($order[1]) : '100';
 					
 					$this->counter++;
 					}

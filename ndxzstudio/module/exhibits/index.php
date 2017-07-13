@@ -537,7 +537,7 @@ var baseurl = '" . BASEURL . "';";
 		// need to validate x
 		delete_image(DIRNAME . BASEFILES . '/' . $_GET['x']);
 		
-		system_redirect("?a=$go[a]&q=settings&id=$go[id]");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=settings&id=$go[id]");
 		exit;
 	}
 			
@@ -1304,8 +1304,8 @@ var ide = '$go[id]';";
 			
 			$last = $this->db->insertArray(PX.'objects', $clean);
 			
-			($clean['link'] == '') ? system_redirect("?a=$go[a]&q=edit&id=$last") : 
-				system_redirect("?a=$go[a]&q=link&id=$last");
+			($clean['link'] == '') ? header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=edit&id=$last") :
+				header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=link&id=$last");
 		}
 		
 		return;
@@ -1425,7 +1425,7 @@ var ide = '$go[id]';";
 		
 		if ($go['id'] == 1) 
 		{
-			system_redirect("?a=$go[a]"); // this can not be deleted
+			header('location:' . BASEURL . BASENAME . "?a=$go[a]"); // this can not be deleted
 			exit;
 		}
 		
@@ -1503,7 +1503,7 @@ var ide = '$go[id]';";
 			$this->db->deleteArray(PX.'media', "media_ref_id='$go[id]'");
 		}
 		
-		system_redirect("?a=$go[a]");	
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]");
 		exit;
 	}
 	
@@ -1525,7 +1525,7 @@ var ide = '$go[id]';";
 			}
 		}
 		
-		system_redirect("?a=$go[a]&q=edit&id=$file[media_ref_id]");
+		header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=edit&id=$file[media_ref_id]");
 		exit;	
 	}
 	
@@ -1554,7 +1554,7 @@ var ide = '$go[id]';";
 
 			$this->db->updateArray(PX.'media', $clean, "media_id='$go[id]'"); 
 			
-			system_redirect("?a=$go[a]&q=view&id=$go[id]");
+			header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=view&id=$go[id]");
 			exit;
 		}
 	}
@@ -2230,7 +2230,9 @@ var ide = '$go[id]';";
 			$clean['object'] 	= 'exhibits';
 			$clean['ord']		= 1;
 			$clean['creator']	= $this->access->prefs['ID'];
-			
+
+			unset($clean['id']);
+
 			$last = $this->db->insertArray(PX.'objects', $clean);
 			
 			echo BASEURL . "/ndxzstudio/?a=$go[a]&q=$q&id=$last";

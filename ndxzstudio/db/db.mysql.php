@@ -24,7 +24,6 @@ class Db
 	{
 		$this->initialize();
 		$this->setNames();
-		$this->setSqlMode();
 	}
 
 

@@ -323,15 +323,15 @@ class Installation
 		  PRIMARY KEY (ab_id)
 		) $isam ;";
 		
-		$sql[] = "CREATE TABLE IF NOT EXISTS".PX."profile (
+		$sql[] = "CREATE TABLE IF NOT EXISTS ".PX."profile (
 			pr_id int(11) NOT NULL AUTO_INCREMENT,
- 			pr_apikey varchar(32) NOT NULL,
-			pr_sitekey varchar(32) NOT NULL,
-			pr_name varchar(250) NOT NULL,
-			pr_title varchar(250) NOT NULL,
-			pr_image varchar(1000) NOT NULL,
-			pr_location varchar(250) NOT NULL,
-			pr_freelance varchar(1) NOT NULL,
+ 			pr_apikey varchar(32) NOT NULL DEFAULT '',
+			pr_sitekey varchar(32) NOT NULL DEFAULT '',
+			pr_name varchar(250) NOT NULL DEFAULT '',
+			pr_title varchar(250) NOT NULL DEFAULT '',
+			pr_image varchar(1000) NOT NULL DEFAULT '',
+			pr_location varchar(250) NOT NULL DEFAULT '',
+			pr_freelance varchar(1) NOT NULL DEFAULT '',
 			PRIMARY KEY (pr_id)
 		) $isam ;";
 
@@ -345,14 +345,14 @@ class Installation
 		  media_thumb varchar(255) NOT NULL DEFAULT '',
 		  media_file_replace varchar(255) NOT NULL DEFAULT '',
 		  media_title varchar(255) NOT NULL DEFAULT '',
-		  media_caption text NOT NULL,
+		  media_caption text NULL DEFAULT NULL,
 		  media_x varchar(5) NOT NULL DEFAULT '',
 		  media_y varchar(5) NOT NULL DEFAULT '',
 		  media_xr smallint(4) NOT NULL DEFAULT '0',
 		  media_yr smallint(4) NOT NULL DEFAULT '0',
 		  media_kb mediumint(9) NOT NULL DEFAULT '0',
-		  media_udate datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-		  media_uploaded datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+		  media_udate datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
+		  media_uploaded datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
 		  media_order smallint(3) NOT NULL DEFAULT '999',
 		  media_hide tinyint(1) NOT NULL DEFAULT '0',
 		  media_dir varchar(255) NOT NULL DEFAULT '',
@@ -365,16 +365,16 @@ class Installation
 		  object varchar(100) NOT NULL DEFAULT '',
 		  obj_ref_id int(4) NOT NULL DEFAULT '0',
 		  title varchar(100) NOT NULL DEFAULT '',
-		  content mediumtext NOT NULL,
+		  content mediumtext NULL DEFAULT NULL,
 		  home tinyint(1) NOT NULL DEFAULT '0',
 		  link varchar(255) NOT NULL DEFAULT '',
 		  target tinyint(1) NOT NULL DEFAULT '0',
 		  iframe tinyint(1) NOT NULL DEFAULT '0',
 		  new tinyint(1) NOT NULL DEFAULT '0',
 		  tags varchar(250) NOT NULL DEFAULT '0',
-		  header text NOT NULL,
-		  udate datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-		  pdate datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+		  header text NULL DEFAULT NULL,
+		  udate datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
+		  pdate datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
 		  creator tinyint(3) NOT NULL DEFAULT '0',
 		  status tinyint(1) NOT NULL DEFAULT '0',
 		  process tinyint(1) NOT NULL DEFAULT '1',
@@ -391,7 +391,7 @@ class Installation
 		  current tinyint(1) NOT NULL DEFAULT '0',
 		  perm tinyint(1) NOT NULL DEFAULT '0',
 		  media_source tinyint(3) NOT NULL DEFAULT '0',
-		  media_source_detail varchar(255) NOT NULL,
+		  media_source_detail varchar(255) NOT NULL DEFAULT '',
 		  images smallint(4) NOT NULL DEFAULT '9999',
 		  thumbs_shape tinyint(1) NOT NULL DEFAULT '0',
 		  thumbs smallint(4) NOT NULL DEFAULT '200',
@@ -408,7 +408,7 @@ class Installation
 		  template varchar(25) NOT NULL DEFAULT 'index.php',
 		  ling varchar(7) NOT NULL DEFAULT 'en',
 		  ling_id varchar(32) NOT NULL DEFAULT '',
-		  serial longtext NOT NULL,
+		  serial longtext NULL DEFAULT NULL,
 		  extra1 varchar(255) NOT NULL DEFAULT '',
 		  extra2 varchar(255) NOT NULL DEFAULT '',
 		  PRIMARY KEY (id)
@@ -423,7 +423,7 @@ class Installation
 		  obj_template varchar(50) NOT NULL DEFAULT '',
 		  obj_members varchar(255) NOT NULL DEFAULT '',
 		  obj_img varchar(255) NOT NULL DEFAULT '',
-		  obj_settings longtext NOT NULL,
+		  obj_settings longtext NULL DEFAULT NULL,
 		  obj_group varchar(255) NOT NULL DEFAULT '',
 		  PRIMARY KEY (obj_id)
 		) $isam ;";
@@ -441,9 +441,9 @@ class Installation
 		  pl_space varchar(100) NOT NULL DEFAULT '',
 		  pl_creator varchar(50) NOT NULL DEFAULT '',
 		  pl_www varchar(255) NOT NULL DEFAULT '',
-		  pl_desc text NOT NULL,
-		  pl_options text NOT NULL,
-		  pl_options_build text NOT NULL,
+		  pl_desc text NULL DEFAULT NULL,
+		  pl_options text NULL DEFAULT NULL,
+		  pl_options_build text NULL DEFAULT NULL,
 		  pl_usage varchar(255) NOT NULL DEFAULT '',
 		  pl_usage_desc varchar(255) NOT NULL DEFAULT '',
 		  pl_order smallint(3) NOT NULL DEFAULT '100',
@@ -458,7 +458,7 @@ class Installation
 		  sec_disp tinyint(3) NOT NULL DEFAULT '1',
 		  sec_hide tinyint(1) NOT NULL DEFAULT '0',
 		  sec_pwd varchar(32) NOT NULL DEFAULT '',
-		  sec_date datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+		  sec_date datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
 		  sec_path varchar(250) NOT NULL DEFAULT '',
 		  sec_subs varchar(100) NOT NULL DEFAULT '',
 		  sec_desc varchar(100) NOT NULL DEFAULT '',
@@ -482,8 +482,8 @@ class Installation
 		  hibernate varchar(255) NOT NULL DEFAULT '',
 		  obj_name varchar(255) NOT NULL DEFAULT '',
 		  obj_theme varchar(50) NOT NULL DEFAULT '',
-		  obj_itop text NOT NULL,
-		  obj_ibot text NOT NULL,
+		  obj_itop text NULL DEFAULT NULL,
+		  obj_ibot text NULL DEFAULT NULL,
 		  obj_org tinyint(1) NOT NULL DEFAULT '1',
 		  obj_apikey varchar(32) NOT NULL DEFAULT '',
 		  site_format varchar(30) NOT NULL DEFAULT '%d %B %Y',
@@ -504,9 +504,9 @@ class Installation
 		  hit_keyword varchar(250) NOT NULL DEFAULT '',
 		  hit_os varchar(20) NOT NULL DEFAULT '',
 		  hit_browser varchar(20) NOT NULL DEFAULT '',
-		  hit_time datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+		  hit_time datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
 		  hit_month varchar(7) NOT NULL DEFAULT '',
-		  hit_day date NOT NULL DEFAULT '0000-00-00',
+		  hit_day date NOT NULL DEFAULT '1970-01-01',
 		  PRIMARY KEY (hit_id)
 		) $isam ;";
 
@@ -516,7 +516,7 @@ class Installation
 		) $isam ;";
 
 		$sql[] = "CREATE TABLE IF NOT EXISTS ".PX."stats_storage (
-		  stor_date varchar(7) NOT NULL DEFAULT '0000-00',
+		  stor_date varchar(7) NOT NULL DEFAULT '1970-01',
 		  stor_hits int(11) NOT NULL DEFAULT '0',
 		  stor_unique int(11) NOT NULL DEFAULT '0',
 		  stor_referrer int(11) NOT NULL DEFAULT '0'
@@ -542,7 +542,7 @@ class Installation
 		  tag_id int(11) NOT NULL AUTO_INCREMENT,
 		  tag_name varchar(255) NOT NULL DEFAULT '',
 		  tag_group smallint(3) NOT NULL DEFAULT '1',
-		  tag_date datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+		  tag_date datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
 		  tag_icon varchar(255) NOT NULL DEFAULT '',
 		  PRIMARY KEY (tag_id),
 		  UNIQUE KEY tag_name (tag_name)
@@ -599,7 +599,7 @@ class Installation
 		
 		foreach ($sql as $install)
 		{
-			$this->db->query($install);
+            $this->db->query($install);
 		}
 	}
 	

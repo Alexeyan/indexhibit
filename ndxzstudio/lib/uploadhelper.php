@@ -162,7 +162,6 @@ class Uploadhelper
 							WHERE 
 							media_ref_id = '$go[id]'");
 
-						$clean['media_id'] = 'NULL';
 						$clean['media_order'] = '1';
 						$clean['media_ref_id'] = $go['id'];
 						$clean['media_file'] = $IMG->origname;

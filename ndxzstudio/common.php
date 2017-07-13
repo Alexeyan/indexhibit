@@ -270,11 +270,18 @@ function front_error($message = '', $code = 404)
 		);
 
 	header('Content-type: text/html; charset=utf-8');
-	header($codes[$code][0]);
-	
+
+    $sapi_type = php_sapi_name();
+    if (substr($sapi_type, 0, 3) == 'cgi') {
+        header($codes[$code][1]);
+    }
+    else {
+        header(sprintf("HTTP/1.1 %s %s", $code, $codes[$code][0]));
+    }
+
 	$rs = $OBJ->vars->exhibit;
 	$rs['error_message'] = $message;
-	
+
 	// 302 is voluntary hibernate mode
 	if ($code != 302)
 	{
@@ -283,7 +290,7 @@ function front_error($message = '', $code = 404)
 	}
 
 	ob_start();
-	include_once DIRNAME . '/ndxzsite/errors.php';
+	include_once DIRNAME . '/ndxzsite/error.php';
 	$buffer = ob_get_contents();
 	ob_end_clean();
 	echo $buffer;
@@ -377,7 +384,7 @@ function show_login($message='', $showreset=true, $no_load_login=false)
 }
 
 
-/* system_redirect("?a=$go[a]&q=note&id=$last"); */
+/* header('location:' . BASEURL . BASENAME . "?a=$go[a]&q=note&id=$last"); */
 function system_redirect($params='')
 {
 	// do we need to put some validators on this?
