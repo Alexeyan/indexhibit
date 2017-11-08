@@ -104,7 +104,7 @@ class Page
 			if (isset($_POST['ndxz_sec_pwd_sbmt']) && ($_POST['ndxz_hid'] == ''))
 			{
 				// it matches the password
-				if (md5($_POST['ndxz_sec_pwd']) == md5($OBJ->vars->exhibit['sec_pwd']))
+				if (password_verify($_POST['ndxz_sec_pwd'], password_hash($OBJ->vars->exhibit['sec_pwd'], PASSWORD_DEFAULT)))
 				{
 					// set the cookie for one day
 					setcookie($page, md5($_POST['ndxz_sec_pwd']), time()+3600*24, '/');
@@ -156,7 +156,7 @@ class Page
 				if (isset($_POST['ndxz_pwd_sbmt']) && ($_POST['ndxz_hid'] == ''))
 				{
 					// it matches the password
-					if (md5($_POST['ndxz_pwd']) == md5($OBJ->vars->exhibit['pwd']))
+					if (password_verify($_POST['ndxz_pwd'], password_hash($OBJ->vars->exhibit['pwd'], PASSWORD_DEFAULT)))
 					{
 						// set the cookie for one day
 						setcookie($page, md5($_POST['ndxz_pwd']), time()+3600*24, '/');
@@ -492,7 +492,7 @@ class Page
 			if (isset($_POST['ndxz_sec_pwd_sbmt']) && ($_POST['ndxz_hid'] == ''))
 			{
 				// it matches the password
-				if (md5($_POST['ndxz_sec_pwd']) == md5($OBJ->vars->exhibit['sec_pwd']))
+				if (password_verify($_POST['ndxz_sec_pwd'], password_hash($OBJ->vars->exhibit['sec_pwd'], PASSWORD_DEFAULT)))
 				{
 					// set the cookie for one day
 					//setcookie($page, md5($_POST['ndxz_pwd']), time()+3600*24, $OBJ->vars->exhibit['url']);
@@ -545,7 +545,7 @@ class Page
 			if (isset($_POST['ndxz_pwd_sbmt']) && ($_POST['ndxz_hid'] == ''))
 			{
 				// it matches the password
-				if (md5($_POST['ndxz_pwd']) == md5($OBJ->vars->exhibit['pwd']))
+				if (password_verify($_POST['ndxz_pwd'], password_hash($OBJ->vars->exhibit['pwd'], PASSWORD_DEFAULT)))
 				{
 					// set the cookie for one day
 					//setcookie($page, md5($_POST['ndxz_pwd']), time()+3600*24, $OBJ->vars->exhibit['url']);

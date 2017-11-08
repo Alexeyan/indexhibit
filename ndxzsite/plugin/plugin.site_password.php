@@ -126,7 +126,7 @@ font-weight: bold; }
 		{
 			$OBJ =& get_instance();
 			
-			if ($_COOKIE['site_password'] == $OBJ->hook->options['site_password']['password'])
+			if (password_verify($_COOKIE['site_password'], password_hash($OBJ->hook->options['site_password']['password'], PASSWORD_DEFAULT)))
 			{
 				$this->has_access = true;
 				
@@ -152,7 +152,7 @@ font-weight: bold; }
 				$password = $P->process('password', array('alphanum'));
 				$password = md5(sha1(md5(sha1($password))));
 				
-				if ($password == $OBJ->hook->options['site_password']['password'])
+				if (password_verify($password, password_hash($OBJ->hook->options['site_password']['password'], PASSWORD_DEFAULT)))
 				{
 					$this->has_access = true;
 					
